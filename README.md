@@ -42,6 +42,7 @@ Feel free to browse through the folders to find problems that interest you!
 
 Let's connect! If you have any questions, suggestions, or just want to discuss coding and problem-solving, you can reach out to me on:
 
-- [LinkedIn]([https://www.linkedin.com/in/yourusername/](https://www.linkedin.com/in/rohit-kumar-11862a238/))
+- [LinkedIn](https://www.linkedin.com/in/rohit-kumar-11862a238/)
+
 
 Happy coding!
