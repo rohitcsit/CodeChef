@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int cs(int n){
+    int a,b;
+    if(n == 0)
+    {
+        return 0;
+    }
+    if(n & 1)
+    {
+        a=b=n/2;
+    }
+    else
+    {
+        a=n/2-1;
+        b=n/2;
+    }
+    return n+1 + cs(a) + cs(b);
+}
+int main(void)
+{
+    int t,m,n;
+    scanf("%d",&t);
+    while(t--)
+    {
+        scanf("%d %d",&n,&m);
+        int max,min;
+        min = cs(n);
+        max = n*(n+3)/2;
+    
+        if(m<min)
+            printf("-1\n");
+        else if(m>max)
+            printf("%d\n",m-max);
+        else
+            printf("0\n");
+    }
+	return 0;
+}
