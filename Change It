@@ -1,0 +1,10 @@
+import statistics as s
+for i in range(int(input())):
+    n = int(input())
+    a = list(map(int, input().split()))
+    b = a.count(s.mode(a))
+    if(n == 2):
+        print(1)
+    else:
+        print(n - b)
+        
