@@ -1,0 +1,16 @@
+# cook your dish here
+for i in range(int(input())):
+    a,b = map(str,input().split())
+    c,d = len(a),len(b)
+    if c > d:
+        a,b = b,a
+        c,d = d,c
+    i=j=0
+    while i < c and j < d:
+        if a[i] == b[j]:
+            i += 1
+        j += 1
+    if i == c:
+        print('YES')
+    else:
+        print('NO')
