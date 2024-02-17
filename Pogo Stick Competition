@@ -1,0 +1,13 @@
+# cook your dish here
+import math
+for _ in range(int(input())):
+    n,k=list(map(int,input().split()))
+    x=list(map(int,input().split()))
+    dp=x[:]
+    for i in range(n):
+        if i-k>=0:
+            dp[i]=max(x[i],dp[i-k]+x[i])
+    if k>=n:
+        print(max(x))
+    else:
+        print(max(dp[n-k:n]))
