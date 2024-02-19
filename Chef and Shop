@@ -1,0 +1,31 @@
+def max_weight_oranges(T, cases):
+    for case in cases:
+        n, k = case[0]
+        oranges = case[1]
+
+        # Find the maximum weight
+        max_weight = 0
+        for i in range(1 << n):
+            cost_sum = 0
+            weight_sum = 0
+            for j in range(n):
+                if i & (1 << j):
+                    cost_sum += oranges[j][0]
+                    weight_sum += oranges[j][1]
+            if cost_sum <= k:
+                max_weight = max(max_weight, weight_sum)
+
+        print(max_weight)
+
+# Sample Input
+T = int(input())
+cases = []
+for _ in range(T):
+    nk = tuple(map(int, input().split()))
+    oranges = []
+    for _ in range(nk[0]):
+        cost_weight = tuple(map(int, input().split()))
+        oranges.append(cost_weight)
+    cases.append((nk, oranges))
+
+max_weight_oranges(T, cases)
