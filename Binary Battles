@@ -1,0 +1,11 @@
+import math
+
+for _ in range(int(input())):
+    N, A, B = map(int, input().split())
+    
+    num_rounds = int(math.log2(N))
+    
+    round_time = num_rounds * A
+    break_time = (num_rounds - 1) * B
+    
+    print(round_time + break_time)
