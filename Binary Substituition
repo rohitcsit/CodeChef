@@ -1,0 +1,16 @@
+t = int(input())
+for test_cases in range(t):
+    s = input()
+    n = len(s)
+    mod = 998244353
+    dp = [1]*n
+    if n==1:
+        print(dp[0])
+    else:
+        dp[1] = dp[0] + ((s[0]!=s[1]))
+        for i in range(2, n):
+            if(s[i]==s[i-1]):
+                dp[i] = dp[i-1]%mod
+            else:
+                dp[i] = (dp[i-1]+dp[i-2])%mod
+        print(dp[n-1])
