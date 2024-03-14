@@ -1,0 +1,17 @@
+
+def count_country_codes(S):
+    codes = set()  # Set to store unique country codes
+    for i in range(len(S) - 1):
+        codes.add(S[i:i+2])  # Extracting two-letter substrings and adding to the set
+    return len(codes)
+
+# Main function
+def main():
+    T = int(input())  # Number of test cases
+    for _ in range(T):
+        S = input().strip()  # Input string
+        print(count_country_codes(S))  # Output count of different country codes
+
+# Calling the main function
+if __name__ == "__main__":
+    main()
