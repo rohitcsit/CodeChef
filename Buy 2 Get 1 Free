@@ -1,0 +1,13 @@
+def minimum_money_required(N, X):
+    buy_two_get_one_free = N // 3
+    total_cost = buy_two_get_one_free * 2 * X
+    remaining_items = N % 3
+    if remaining_items > 0:
+        total_cost += remaining_items * X
+    return total_cost
+
+T = int(input())
+
+for _ in range(T):
+    N, X = map(int, input().split())
+    print(minimum_money_required(N, X))
