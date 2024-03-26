@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	int x,y;
+	int n;
+	while(t--){
+	    cin>>x>>y;
+	    n = (x*y)/100 ;
+	    cout<<n<<endl;
+	}
+	return 0;
+}
