@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    
+    bool B1, B2, B3;
+    cin >> B1 >> B2 >> B3;
+    
+    if(!B1 && !B2 || !B1 && !B3 || !B2 && !B3) {
+        cout << "Water filling time" << endl;
+    }
+    else {
+        cout << "Not now" << endl;
+    }
+    
+}
+
+int main() {
+	
+	int T = 1;
+	cin >> T;
+	
+	while(T--) {
+	    solve();
+	}
+	
+	return 0;
+}
