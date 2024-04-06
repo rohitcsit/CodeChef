@@ -1,0 +1,29 @@
+#include <iostream>
+#include<cmath>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t,N,x;
+	std::cin >> t;
+	while(t--){
+	    std::cin >> N>>x;
+	    if(N<=x)
+	    {
+	        std::cout << 0 << std::endl;
+	    }
+	    else{
+	          if((N-x)%4==0)
+	          {
+	              
+	          std::cout <<((N-x)/4) << std::endl;
+	          }
+	          else{
+	              std::cout <<((N-x)/4)+1 << std::endl;
+	          }
+	    }
+	    
+	   
+	}
+	return 0;
+}
