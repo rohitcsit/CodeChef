@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+// Function to find Mario's size after eating X mushrooms
+string mario_size_after_x_mushrooms(int X) {
+    // Mario's initial size
+    string size = "NORMAL";
+    
+    // Determine Mario's size after eating X mushrooms
+    for (int i = 0; i < X; ++i) {
+        if (size == "NORMAL") {
+            size = "HUGE";
+        } else if (size == "HUGE") {
+            size = "SMALL";
+        } else if (size == "SMALL") {
+            size = "NORMAL";
+        }
+    }
+    
+    return size;
+}
+
+int main() {
+    // Number of test cases
+    int T;
+    cin >> T;
+    
+    // Iterate through each test case
+    for (int t = 0; t < T; ++t) {
+        // Number of mushrooms eaten
+        int X;
+        cin >> X;
+        
+        // Find Mario's size after eating X mushrooms and print the result
+        cout << mario_size_after_x_mushrooms(X) << endl;
+    }
+    return 0;
+}
