@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int x,y,z;
+	    cin>>x>>y>>z;
+	    int breaks=x/3;
+	    if(x%3==0)
+	     breaks--;
+	     
+	    int ans=x*y;
+	    ans+=z*breaks;
+	    cout<<ans<<endl;
+	}
+	return 0;
+}
