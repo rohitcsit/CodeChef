@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int T;
+	cin>>T;
+	while(T--)
+	{
+	    int N,A,B,t=0;
+	    cin>>N>>A>>B;
+	    while(N--)
+	        N%2==0?t+=A:t+=B;
+	    cout<<t<<endl;
+	}
+}
