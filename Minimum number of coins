@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--){
+	    int x;
+	    cin>>x;
+	    int cnt=0;
+	    if(x%5!=0 && x%15!=0)   cout<<-1<<endl;
+	    else{
+	        while(x>0){
+	            if(x>=10){
+	                x-=10;
+	                cnt++;
+	            }
+	            else if(x>=5){
+	                x-=5;
+	                cnt++;
+	            }
+	        }
+
+	    cout<<cnt<<endl;
+	    }
+	}
+	return 0;
+}
