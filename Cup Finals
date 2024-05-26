@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t,x,y,d;
+	std::cin >> t;
+	while(t--)
+	{
+	    std::cin >> x>>y>>d;
+	    string res=(d>=abs(x-y))?"yes":"no";
+	    std::cout << res << std::endl;
+	}
+	return 0;
+}
