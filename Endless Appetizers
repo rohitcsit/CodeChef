@@ -1,0 +1,7 @@
+import math
+for i in range(int(input())):
+    a,b,c=map(int,input().split(' '))
+    s=c/30
+    t=s+a
+    res=math.ceil(t/b)
+    print(int(res))
