@@ -1,0 +1,8 @@
+# cook your dish here
+for i in range(int(input())):
+    N = int(input())
+    if N > 4:
+        G = N//5
+        print(N-G)
+    else:
+        print(N)
