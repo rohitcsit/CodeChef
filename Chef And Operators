@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main(void) {
+	// your code goes here
+	int a;
+	scanf("%d",&a);
+	while(a--)
+	{
+	    int i,j;
+	    scanf("%d %d",&i,&j);
+	    if(i>j)
+	    {printf("\n>");
+	    continue;}
+	    else if(i<j){
+	    printf("\n<");
+	        continue;
+	    }
+	    else if("=");{
+	    printf("\n=");}
+	}
+	return 0;
+}
+
