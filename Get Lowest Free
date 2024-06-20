@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main(void) {
+	// your code goes here
+	int t;
+	scanf("%d\n",&t);
+	while(t--){
+	    int x,y,k,min;
+	    scanf("%d %d %d",&x,&y,&k);
+	   if(x<=y && x<=k) min=x;
+	  else if(y<=x && y<=k) min=y;
+	   else min=k;
+	   printf("%d\n",x+y+k-min);
+	}
+	return 0;
+}
