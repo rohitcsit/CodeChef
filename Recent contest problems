@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <string.h>
+int main(void) {
+    int t;
+    scanf("%d",&t);//input test cases
+    while(t--){
+        int n,i,result,c1=0,c2=0;
+        char name[20];
+        scanf("%d",&n);
+        for(i=0;i<n;i++){
+            scanf("%s",name);//input string
+            result=strcmp("START38",name);
+            if(result==0) c1++;//for START38
+            else c2++;//for LTIME108
+        }
+        printf("%d %d\n",c1,c2);
+    }
+	return 0;
+}
