@@ -1,0 +1,46 @@
+#include <stdio.h>
+#define MOD 1000000007
+int ppot[30][2][2]={{{2,2},{1,0}}};
+void mnozi(int a[][2],int b[][2],int c[][2])
+{
+    int t;
+    t=((long long)a[0][0]*b[0][0]+(long long)a[0][1]*b[1][0])%MOD;
+    c[0][1]=((long long)a[0][0]*b[0][1]+(long long)a[0][1]*b[1][1])%MOD;
+    c[0][0]=t;
+    t=((long long)a[1][0]*b[0][0]+(long long)a[1][1]*b[1][0])%MOD;
+    c[1][1]=((long long)a[1][0]*b[0][1]+(long long)a[1][1]*b[1][1])%MOD;
+    c[1][0]=t;
+}
+int pot(int n)
+{
+    int t[2][2]={{1,0},{0,1}};
+    int i,u;
+    n--;
+    u=2*(n&1)-1;
+    for(i=0;n;i++,n>>=1)
+        if (n&1)
+            mnozi(t,ppot[i],t);
+    u+=2*t[0][0];
+    if (u<0) u+=MOD;
+    if (u>MOD) u-=MOD;
+    return u;
+}
+void ispis(int a[][2])
+{
+    printf("%d %d\n%d %d\n\n",a[0][0],a[0][1],a[1][0],a[1][1]);
+}
+int main()
+{
+    int t,i;
+    for(i=1;i<30;i++)
+        mnozi(ppot[i-1],ppot[i-1],ppot[i]);
+    scanf("%d",&t);
+    while(t--)
+    {
+        int n;
+        scanf("%d",&n);
+        printf("%d\n",pot(n));
+    }
+
+    return 0;
+}
