@@ -1,0 +1,43 @@
+#include <stdio.h>
+int n,m,ans = 0;
+short ofr[21][20001],map[21][21],vis[21];
+void dfs(int dep,int tans)
+{
+    int i;
+    if(dep>m)
+    {
+        ans = ans>tans?ans:tans;
+        return;
+    }
+    if(!vis[dep])
+    {
+        vis[dep]++;
+        for(i=dep+1;i<=m;i++) if(map[dep][i]) vis[i]++;
+        dfs(dep+1,tans+1);
+        for(i=dep+1;i<=m;i++) if(map[dep][i]) vis[i]--;
+        vis[dep]--;
+    }
+    dfs(dep+1,tans);
+}
+int main()
+{
+    int i,j,k,num;
+    scanf("%d%d",&n,&m);
+    for(i=1;i<=m;i++)
+    {
+        scanf("%d",&k);
+        for(j=1;j<=k;j++)
+        {
+            scanf("%d",&num);
+            ofr[i][num] = 1;
+        }
+    }
+    for(i=2;i<=m;i++) for(j=1;j<i;j++) for(k=1;k<=n;k++) if(ofr[i][k]&&ofr[j][k])
+    {
+        map[i][j] = map[j][i] = 1;
+        break;
+    }
+    dfs(1,0);
+    printf("%d",ans);
+    return 0;
+}
