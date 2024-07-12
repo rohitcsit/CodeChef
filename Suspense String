@@ -1,0 +1,26 @@
+# cook your dish here
+t=int(input())
+for i in range(t):
+    n=int(input())
+    s=input()
+    front=0
+    back=n-1
+    l=""
+    while front<back:
+        if s[front]=="0":
+            l="0"+l
+        else:
+            l+="1"
+        if s[back]=="1":
+            l="1"+l
+        else:
+            l+="0"
+        front+=1
+        back-=1
+    if n%2!=0:
+        if s[n//2]=="1":
+            l+="1"
+        else:
+            l="0"+l
+    print(l)    
+        
