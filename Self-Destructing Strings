@@ -1,0 +1,7 @@
+for _ in range(int(input())):
+    s = input()
+    if len(s) % 2 == 1 or s.count('0') == 0 or s.count('0') == len(s):
+        print(-1)
+    else:
+        # abs(0s-1s) = abs(0s-(n-0s))
+        print(abs(2*s.count('0')-len(s))//2)
