@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MOD 1000000007
+
+typedef unsigned int uint;
+typedef long long ll;
+
+char sequences[300005][21];
+uint dp[300005][20][20];
+
+int main() {
+    int num_chars, num_operations;
+    scanf("%d%d", &num_chars, &num_operations);
+    int left = 1, middle = 0, right = 0;
+
+    for (int op = 1; op <= num_operations; op++) {
+        char command[30];
+        scanf("%s", command);
+        
+        if (command[0] == 'a') {
+            scanf("%s", sequences[++right]);
+            if (middle == right - 1) {
+                for (int i = 0; i < num_chars; i++) dp[right][i][i] = 1;
+            } else {
+                for (int i = 0; i < num_chars; i++) {
+                    if (i && sequences[right][i] == sequences[right - 1][i - 1]) {
+                        for (int k = 0; k < num_chars; k++) dp[right][i][k] += dp[right - 1][i - 1][k];
+                    }
+                    if (sequences[right][i] == sequences[right - 1][i]) {
+                        for (int k = 0; k < num_chars; k++) dp[right][i][k] += dp[right - 1][i][k];
+                    }
+                    if (i + 1 < num_chars && sequences[right][i] == sequences[right - 1][i + 1]) {
+                        for (int k = 0; k < num_chars; k++) dp[right][i][k] += dp[right - 1][i + 1][k];
+                    }
+                    for (int k = 0; k < num_chars; k++) dp[right][i][k] %= MOD;
+                }
+            }
+        } else if (command[0] == 'r') {
+            if (left > middle) {
+                middle = right;
+                for (int i = left; i <= middle; i++) memset(dp[i], 0, sizeof(dp[i]));
+                for (int i = 0; i < num_chars; i++) dp[middle][i][i] = 1;
+                for (int i = middle - 1; i >= left; i--) {
+                    for (int j = 0; j < num_chars; j++) {
+                        if (j && sequences[i][j] == sequences[i + 1][j - 1]) {
+                            for (int t1 = 0; t1 < num_chars; t1++) dp[i][j][t1] += dp[i + 1][j - 1][t1];
+                        }
+                        if (sequences[i][j] == sequences[i + 1][j]) {
+                            for (int t1 = 0; t1 < num_chars; t1++) dp[i][j][t1] += dp[i + 1][j][t1];
+                        }
+                        if (j + 1 < num_chars && sequences[i][j] == sequences[i + 1][j + 1]) {
+                            for (int t1 = 0; t1 < num_chars; t1++) dp[i][j][t1] += dp[i + 1][j + 1][t1];
+                        }
+                        for (int t1 = 0; t1 < num_chars; t1++) dp[i][j][t1] %= MOD;
+                    }
+                }
+            }
+            left++;
+        } else {
+            int x, y;
+            scanf("%d%d", &x, &y);
+            x--;
+            y--;
+            if (left > middle) {
+                printf("%u\n", dp[right][y][x]);
+            } else if (right == middle) {
+                printf("%u\n", dp[left][x][y]);
+            } else {
+                uint result = 0;
+                for (int i = 0; i < num_chars; i++) {
+                    if (dp[left][x][i]) {
+                        uint value = 0;
+                        if (i && sequences[middle][i] == sequences[middle + 1][i - 1]) value += dp[right][y][i - 1];
+                        if (sequences[middle][i] == sequences[middle + 1][i]) value += dp[right][y][i];
+                        if (i + 1 < num_chars && sequences[middle][i] == sequences[middle + 1][i + 1]) value += dp[right][y][i + 1];
+                        result = (result + (ll)value * dp[left][x][i]) % MOD;
+                    }
+                }
+                printf("%u\n", result);
+            }
+        }
+    }
+    return 0;
+}
